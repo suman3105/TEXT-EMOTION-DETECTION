@@ -11,15 +11,15 @@ import os
 def load_model():
     # Get directory of current file
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    model_path = os.path.join(current_dir, "jod.pkl")
+    model_path = os.path.join(current_dir, "text_emotion.pkl")
 
     if not os.path.exists(model_path):
         # Try one folder up (project root)
-        model_path = os.path.join(os.path.dirname(current_dir), "jod.pkl")
+        model_path = os.path.join(os.path.dirname(current_dir), "text_emotion.pkl")
 
     if not os.path.exists(model_path):
         st.error(f"❌ Model file not found. Expected at: {model_path}")
-        raise FileNotFoundError("jod.pkl not found")
+        raise FileNotFoundError("text_emotion.pkl not found")
 
     # Removed st.info notification
     return joblib.load(model_path)
